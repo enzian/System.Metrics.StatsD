@@ -1,0 +1,4 @@
+[submodule "src/System.Metrics"]
+	path = src/System.Metrics
+	url = https://github.com/enzian/System.Metrics
+	branch = master

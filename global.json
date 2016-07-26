@@ -1,0 +1,8 @@
+{
+    "projects":
+    [ 
+        "src",
+        "test",
+        "src/System.Metrics/src/"
+    ]
+}

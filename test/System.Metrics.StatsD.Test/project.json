@@ -1,0 +1,27 @@
+{
+  "version": "1.0.0-alpha",
+  "buildOptions": {
+    "debugType": "portable",
+    "emitEntryPoint": false
+  },
+  "testRunner": "xunit",
+  "dependencies": {
+    "System.Metrics.StatsD":"1.0.0-alpha",
+    "xunit": "2.2.0-beta2-build3300",
+    "dotnet-test-xunit": "2.2.0-preview2-build1029",
+    "FluentAssertions": "4.12.0"
+  },
+  "frameworks": {
+    "netcoreapp1.0": {
+      "dependencies": {
+        "Microsoft.NETCore.App": {
+          "type": "platform",
+          "version": "1.0.0"
+        }
+      },
+      "imports": [
+        "dnxcore50"
+      ] 
+    }
+  }
+}

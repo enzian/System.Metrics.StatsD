@@ -1,0 +1,24 @@
+{
+  "version": "1.0.0-alpha",
+  "buildOptions": {
+    "debugType": "portable",
+    "emitEntryPoint": false
+  },
+  "dependencies": {
+    "NETStandard.Library": "1.6.0",
+    "System.Net.Sockets":"4.1.0",
+    "System.Net.Primitives":"4.0.11",
+    "System.Net.NameResolution":"4.0.0",
+    "System.Metrics": {
+        "version": "1.0.0-alpha",
+        "target": "project"
+      }
+  },
+  "frameworks": {
+    "netstandard1.3": {
+      "imports": [
+        "dnxcore50"
+      ] 
+    }
+  }
+}
