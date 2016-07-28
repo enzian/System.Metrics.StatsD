@@ -7,15 +7,11 @@ namespace System.Metrics.StatsD
 {
     public class StatsdBackend : IMetricsSink
     {
-        public Socket Socket { get; internal set; }
+        internal StatsSender Send { get; set; }
         
-        public Task Handle(string metricRecord)
+        public async Task Handle(string metricRecord)
         {
-            return Task.Run(
-                () => 
-                {
-                    Socket.SendTo(Encoding.UTF8.GetBytes(metricRecord + "\n"), new IPEndPoint(IPAddress.Parse("127.0.0.1"), 8125));
-                });
+            await Send(Encoding.UTF8.GetBytes(metricRecord + "\n"));
         }
     }
 }
