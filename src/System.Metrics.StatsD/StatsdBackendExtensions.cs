@@ -1,3 +1,4 @@
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -23,8 +24,6 @@ namespace System.Metrics.StatsD
         
         public static StatsdBackend UseTcp(this StatsdBackend backend, string host = "localhost", int port = 8125, int? mtuSize = null)
         {
-            var sending_socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-
             var ip = Resolve(host, port);
             var tcpClient = new TcpClient();
             NetworkStream stream;
@@ -39,8 +38,30 @@ namespace System.Metrics.StatsD
                 throw new Exception($"Cannot cannot connect via TCP to {ip}:{port} !");
             }
 
+            // Object used for synchronization
+            var obj = new object();
+
             backend.Send = delegate (byte[] content) {
-                return Task.Run(() => stream.Write(content, 0, content.Length));
+                return Task.Run(
+                    () => 
+                    {
+                        lock (obj)
+                        {
+                            try
+                            {
+                                stream.Write(content, 0, content.Length);
+                                stream.Flush();
+                            }
+                            catch (System.Exception)
+                            {
+                                // Of there is a problem with the connection - open a new one.
+                                // IDEA: implement retries with exponential back-off time here!
+                                tcpClient = new TcpClient();
+                                tcpClient.ConnectAsync(ip, port).Wait();
+                                stream = tcpClient.GetStream();
+                            }
+                        }
+                    });
             };
 
             return backend;
