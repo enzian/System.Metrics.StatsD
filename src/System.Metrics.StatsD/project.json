@@ -1,21 +1,5 @@
 {
-  "version": "1.0.0-alpha",
-  "id": "System.Metrics.StatsD",
-  "packOptions": {
-    "authors": ["Michael (Enzian) Ingold"],
-    "owners": ["Michael (Enzian) Ingold"],
-    "description": "This is a `StatsD` extension for the `System.Metrics` library.",
-    "licenseUrl": "https://github.com/enzian/System.Metrics.StatsD/blob/master/LICENSE.txt",
-    "repository": {
-      "url": "https://github.com/enzian/System.Metrics.StatsD",
-      "type": "git"
-    },
-    "tags": [
-      "metrics",
-      "system",
-      "statsd"
-    ]
-  },
+  "version": "1.0.0-alpha1",
   "buildOptions": {
     "debugType": "portable",
     "emitEntryPoint": false
@@ -26,7 +10,7 @@
     "System.Net.Primitives":"4.0.11",
     "System.Net.NameResolution":"4.0.0",
     "System.Metrics": {
-        "version": "1.0.0-alpha",
+        "version": "1.0.0-alpha1",
         "target": "project"
       }
   },
