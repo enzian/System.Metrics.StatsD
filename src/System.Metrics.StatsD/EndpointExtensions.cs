@@ -2,13 +2,13 @@ namespace System.Metrics.StatsD
 {
     public static class EndpointExtensions
     {
-        public static Endpoint AddStatsD(this Endpoint endpoint)
+        public static IMetricsEndpoint AddStatsD(this IMetricsEndpoint endpoint)
         {
             endpoint.AddBackend(new StatsdBackend());
             return endpoint;
         }
 
-        public static Endpoint AddStatsD(this Endpoint endpoint, Action<StatsdBackend> setup)
+        public static IMetricsEndpoint AddStatsD(this IMetricsEndpoint endpoint, Action<StatsdBackend> setup)
         {
             var backend = new StatsdBackend();
 
