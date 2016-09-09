@@ -15,8 +15,7 @@ namespace System.Metrics.StatsD
             var udpClient = new UdpClient();
 
             backend.Send = delegate (byte[] content) {
-                return udpClient.SendAsync(content, content.Length, endpoint)
-                    .ContinueWith(x => Console.WriteLine($"Sent: {x.Result} bytes"));
+                return udpClient.SendAsync(content, content.Length, endpoint);
             };
 
             return backend;
