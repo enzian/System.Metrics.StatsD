@@ -1,8 +1,21 @@
 {
-  "version": "1.0.0-alpha2",
+  "version": "1.0.0-alpha4",
   "buildOptions": {
     "debugType": "portable",
     "emitEntryPoint": false
+  },
+  "name": "System.Metrics.StatsD",
+  "authors": ["Michael (Enzian) Ingold"],
+  "description": "This is an extension library for the System.Metrics library.",
+  "packOptions": {
+    "tags": ["system", "metrics", "statsd"],
+    "owners": ["Michael (Enzian) Ingold"],
+    "projectUrl": "https://github.com/enzian/System.MetricsStatsD",
+    "licenseUrl": "https://raw.githubusercontent.com/enzian/System.Metrics.StatsD/master/LICENSE.txt",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/enzian/System.Metrics.StatsD"
+    }
   },
   "dependencies": {
     "NETStandard.Library": "1.6.0",
@@ -12,7 +25,7 @@
     "System.Metrics": "1.0.0-*"
   },
   "frameworks": {
-    "netstandard1.3": {
+    "netstandard1.6": {
       "imports": [
         "dnxcore50"
       ] 
